@@ -62,7 +62,8 @@ module.exports = {
         '^pages/(.*)$': '<rootDir>/src/pages/$1',
         '^assets/(.*)$': '<rootDir>/src/assets/$1',
         '^boot/(.*)$': '<rootDir>/src/boot/$1',
-        '.*css$': '<rootDir>/test/jest/__tests__/__stub_module_files__/style.js'
+        '.*css$': '<rootDir>/test/jest/__tests__/__stub_module_files__/style.js',
+        '^dexie(/(.*)|$)': 'dexie$1'
     },
     transform: {
         // See https://jestjs.io/docs/en/configuration.html#transformignorepatterns-array-string
