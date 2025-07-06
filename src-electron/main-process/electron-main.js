@@ -66,6 +66,13 @@ function createWindow() {
     });
 }
 
+app.on('will-finish-launching', () => {
+    if (process.platform !== 'darwin' || app.isDefaultProtocolClient('ror2mm')) {
+        return;
+    }
+    app.setAsDefaultProtocolClient('ror2mm', process.execPath);
+});
+
 app.on('ready', () => {
     createWindow();
     let reqLockSuccess = app.requestSingleInstanceLock();
@@ -93,6 +100,12 @@ app.on('ready', () => {
         );
         ipcServer.server.start();
     }
+});
+
+app.on('open-url', (event, url) => {
+    ipcServer.connectTo('r2mm', () => {
+        ipcServer.of.r2mm.emit('install', url);
+    });
 });
 
 app.whenReady().then(() => {

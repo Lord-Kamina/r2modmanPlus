@@ -220,7 +220,14 @@ module.exports = configure(function(/* ctx */) {
                 },
                 mac: {
                     category: "games",
-                    icon: "src/assets/icon"
+                    icon: "src/assets/icon",
+                    protocols: [
+                        {
+                            name: 'Thunderstore',
+                            schemes: ['ror2mm']
+                        }
+                    ]
+
                 }
             },
 
